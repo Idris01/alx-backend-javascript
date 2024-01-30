@@ -18,7 +18,7 @@ function countStudents(path = 'database.csv') {
     }
     for (const stud of Object.keys(studentMap)) {
       const data = studentMap[stud];
-      console.log(`Number of students in ${stud}: ${data.length}. List: ${data.toString()}`);
+      console.log(`Number of students in ${stud}: ${data.length}. List: ${data.join(', ')}`);
     }
   } catch (e) {
     throw new Error('Cannot load the database');
