@@ -23,7 +23,7 @@ async function countStudents(path) {
         }
         return resolve();
       }
-      reject(new Error('Cannot load the database'));
+      return reject(new Error('Cannot load the database'));
     });
   });
 }
