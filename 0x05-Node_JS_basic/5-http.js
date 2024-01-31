@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const database = process.argv[2];
+const database = process.argv[2] || 'database.csv';
 const conn = { host: 'localhost', port: 1245 };
 const app = http.createServer((req, res) => {
   const { url } = req;
