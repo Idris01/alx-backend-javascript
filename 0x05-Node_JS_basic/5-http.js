@@ -32,7 +32,6 @@ const app = http.createServer((req, res) => {
           res.end();
           resolve();
         } else {
-          res.end();
           reject(new Error(errorMessage));
         }
       });
