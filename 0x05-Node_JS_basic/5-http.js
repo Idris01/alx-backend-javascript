@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 
-const database = process.argv[2] || 'database.csv';
+const errorMessage = 'Cannot load the database';
+const database = process.argv[2];
 const conn = { host: 'localhost', port: 1245 };
 const app = http.createServer((req, res) => {
   const { url } = req;
@@ -32,11 +33,14 @@ const app = http.createServer((req, res) => {
           resolve();
         } else {
           res.end();
-          reject(new Error(`${err}`));
+          reject(new Error(errorMessage));
         }
       });
     }).then()
-      .catch(() => {});
+      .catch(() => {
+        res.write(`\n${new Error(errorMessage)}`);
+        res.end('');
+      });
   } else res.end('');
 });
 app.listen(conn, () => {
