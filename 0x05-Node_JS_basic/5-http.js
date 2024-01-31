@@ -8,10 +8,10 @@ const app = http.createServer((req, res) => {
   const { url } = req;
   if (url === '/') res.end('Hello Holberton School!');
   else if (url === '/students') {
-    res.write('This is the list of our students');
     new Promise((resolve, reject) => {
       fs.readFile(database, (err, data) => {
         if (!err) {
+          res.write('This is the list of our students');
           const db = data.toString('utf-8').trim().split('\n').slice(1);
           res.write(`\nNumber of students: ${db.length}`);
           const studentMap = {};
@@ -37,7 +37,7 @@ const app = http.createServer((req, res) => {
       });
     }).then()
       .catch(() => {
-        res.write(`\n${new Error(errorMessage)}`);
+        res.write(`${new Error(errorMessage)}`);
         res.end('');
       });
   } else res.end('');
