@@ -17,4 +17,9 @@ describe('calculateNumber', function() {
   it('1.5 plus 3.7 equals 6', function() {
     assert.equal(calculateNumber(1.5, 3.7), 6);
     });
+  
+  it('-1.5 plus 3.7 equals 3', function() {
+    assert.equal(calculateNumber(-1.5, 3.7), 3);
+    });
+
 });
